@@ -28,7 +28,9 @@ endDF <- cbind(rawDF, Groep = grSampled)
 
 endDF <- arrange(endDF, Groep, Achternaam)
 endDF
-y <- DT::datatable(endDF)
-DT::saveWidget(y, 'groep.html')
+y <- datatable(endDF, options = list(columnDefs = list(list(
+            className = 'dt-left', targets = list(1,2,3)
+          ))))
+saveWidget(y, 'groep.html')
 ```
 
