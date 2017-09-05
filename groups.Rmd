@@ -1,0 +1,34 @@
+---
+title: "Groups"
+author: "Witek ten Hove"
+date: "9/5/2017"
+output: html_document
+---
+
+## Lees data in
+
+```{r cars}
+library(tidyverse)
+library(gsheet)
+library(DT)
+rawDF <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1HFamYBDdZLnZT9s2lPtsOY7Vqoc84fPWFsbb1MMyeGw/edit?usp=sharing")
+rawDF
+```
+
+## Sampling
+
+```{r pressure, echo=FALSE}
+m <- dim(rawDF)[1]
+n <- 3
+r <- m%%n
+
+grNum <- c(rep(1:((m-r)/n), n), sample(1:((m-r)/n),r))
+grSampled <- sample(grNum, m)
+endDF <- cbind(rawDF, Groep = grSampled)
+
+endDF <- arrange(endDF, Groep, Achternaam)
+endDF
+y <- DT::datatable(endDF)
+DT::saveWidget(y, 'groep.html')
+```
+
