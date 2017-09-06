@@ -1,0 +1,67 @@
+---
+title: "Natural Language Processing (NLP) met R"
+output: html_notebook
+---
+
+## Tekstanalyse
+In deze notebook wordt getoond hoe tekst automatisch kan worden geanalyseerd. De data in dit voorbeeld komt uit een Google Spreadsheet en bevat de antwoorden van een survey onder studenten van de [HAN Minor Smart Industry](https://witusj.github.io/MinorSI/) (MSI), waarin werd gevraagd naar de motivatie voor het onderwerp van de minor.
+
+### Stap 1: Laad alle libraries en lees de databron in.
+
+```{r, message=FALSE, warning=FALSE}
+library(gsheet)
+library(tm)
+library(topicmodels)
+library(tidytext)
+library(ggplot2)
+library(dplyr)
+
+url <- "https://docs.google.com/spreadsheets/d/1mqn6pg_0iu7Kj-VmPG-g_H0mK9Ib7YjmShzTkrcYUWw/edit?usp=sharing"
+responses <- as.data.frame(gsheet2tbl(url = url, sheetid = NULL))
+head(responses)
+```
+
+### Stap 2: Creëer een document term matrix.
+
+```{r, message=FALSE, warning=FALSE}
+colnames(responses) <- c("time","txt")
+myCorpus <- Corpus(VectorSource(responses$txt))
+myCorpus <- tm_map(myCorpus, content_transformer(tolower))
+myCorpus <- tm_map(myCorpus, removeWords, stopwords(kind = "nl"))
+myCorpus <- tm_map(myCorpus, removeWords, c("minor", "smart", "industry"))
+myDTM <- DocumentTermMatrix(myCorpus)
+inspect(myDTM)
+
+```
+
+### Stap 3: Genereer het Latent Dirichlet Allocation (LDA) model
+
+```{r}
+responsesLDA <- LDA(myDTM, k = 2, control = list(seed = 1234))
+responsesLDA
+```
+
+### Stap 4: Genereer tabellen en grafieken
+
+```{r, message=FALSE, warning=FALSE}
+
+responsesTopics <- tidy(responsesLDA, matrix = "beta")
+responsesTopics
+
+ResponsesDocuments <- tidy(responsesLDA, matrix = "gamma")
+ResponsesDocuments
+
+responsesTTerms <- responsesTopics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+responsesTTerms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free_y") +
+  coord_flip()
+```
+
