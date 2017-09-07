@@ -66,7 +66,7 @@ $\text{    }E \supset F$
 
 **Vraag:** Test of geldt dat $F \subset E$
 
-**Vraag:** Toon aan dat als geldt dat $E \subset F$ en $F \subset E$, de verzamelingen E en F gelijk zijn ($F = E$).
+**Vraag:** Toon aan dat als geldt dat $E \subset F$ en $E \supset F$, de verzamelingen E en F gelijk zijn ($F = E$).
 
 <br>
 Stel we definieren twee verzamelingen G = {`r G`} en H = {`r H`} en I als de verzameling van elementen die zowel in G als H voorkomen.
