@@ -62,7 +62,7 @@ $\text{    }E \subset F$
 
 en dus omvat F alle elementen uit de verzameling E:
 
-$\text{    }E \supset F$
+$\text{    }F \supset E$
 
 **Vraag:** Test of geldt dat $F \subset E$
 
