@@ -1,0 +1,78 @@
+---
+title: "Wiskunde voor Statistiek"
+subtitle: "H1 - Verzamelingen"
+author: "Witek ten Hove"
+output: html_notebook
+---
+<hr>
+Deze notebook hoort bij het boek ["Wiskunde voor Statistiek"](https://shop.coutinho.nl/store_nl/wiskunde-voor-statistiek.html) en demonstreert de concepten die hierin worden besproken met behulp van R.
+<hr>
+
+Een **verzameling** is een duidelijk afgebakend geheel van objecten, die aan bepaalde voorwaarden moeten voldoen, willen ze tot die verzameling behoren. De objecten worden de *elementen* van de verzameling genoemd.
+
+```{r}
+n <- 5
+A <- letters[1:n]
+cat("De variabele A bevat de verzameling van de eerste", length(A), "letters van het alfabet: ", A)
+```
+
+In bovenstaande code hebben we een variabele A benoemd en hieraan de eerste `r n` letters van het alfabet als elementen toegevoegd. Een één-dimensionele verzameling van enkelvoudige elementen wordt in R een `vector` genoemd.
+
+**Vraag:** Wat doet de functie `length()`?
+
+<br>
+Stel we hebben twee verzamelingen B en C en we beschrijven C als de verzameling van elementen uit B die aan een bepaald criterium voldoen.
+
+```{r}
+B <- c(1:20)
+t1 <- B < 10
+C <- B[t1]
+
+cat("B bevat de cijfers", min(B), "t/m", max(B), ". De variabele t1 bevat de uitkomsten van de test 'Is het element uit B kleiner dan 10?'(", head(t1, 3),"...) en C bevat alle elementen uit B waarvoor geldt dat de uitkomst van de test TRUE is:", C)
+```
+
+**Vraag:** Wat doen de functies `min()`, `max()` en `head()`?
+
+**Vraag:** Zoek uit met welke functie je de laatste zes elementen van een vector kunt selecteren.
+
+<br>
+We kunnen nu testen welke elementen van B niet in C voorkomen.
+
+```{r}
+t2 <- B %in% C
+D <- B[!t2]
+cat("De verzameling D bevat alle elementen uit B die niet tot C behoren:", D)
+```
+
+**Vraag:** Wat doet het uitroepteken in bovenstaande code?
+
+<br>
+We definieren nu E als de verzameling {`r E`} en F als alle oneven getallen van 1 t/m `r n`.
+
+```{r}
+m <- 100
+F <- seq(1, m, 2)
+E <- c(3, 5, 7)
+t3 <- E %in% F
+cat("De vector t3 bevat de uitkomsten van de test 'E komt voor in F':", t3)
+```
+E is dus een deelverzameling van F:
+
+$\text{    }E \subset F$
+
+**Vraag:** Test of geldt dat $F \subset E$
+
+<br>
+Stel we definieren twee verzamelingen G = {`r G`} en H = {`r H`} en I als de verzameling van elementen die zowel in G als H voorkomen.
+
+```{r}
+G <- E
+H <- c(1, 2, 4)
+t4 <- G %in% H
+I <- H[t4]
+cat("De vector t3 bevat de uitkomsten van de test 'G komt voor in H':", t3, "en I bevat dus", length(I), "elementen.")
+```
+
+De **lege verzameling**, $\varnothing$, is een verzameling die geen enkel element bevat. In het bovenstaande voorbeeld zijn G en H **disjuncte** (elkaar uitsluitende) verzamelingen:
+
+$\text{ }G \cap H = \varnothing$
