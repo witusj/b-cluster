@@ -60,7 +60,9 @@ E is dus een deelverzameling van F:
 
 $\text{    }E \subset F$
 
-F omvat alle elementen uit de verzameling E.
+en dus omvat F alle elementen uit de verzameling E:
+
+$\text{    }E \supset F$
 
 **Vraag:** Test of geldt dat $F \subset E$
 
