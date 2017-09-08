@@ -99,7 +99,7 @@ De **lege verzameling**, $\varnothing$, is een verzameling die geen enkel elemen
 
 $\text{ }J \cap K = \varnothing$
 
-De **vereniging** van twee verzamelingen J en K, $\cup$, is de verzameling waarvan de elementen tot A of tot B of tot beide behoren.
+De **vereniging** van twee verzamelingen J en K, $\cup$, is de verzameling waarvan de elementen tot J of tot K of tot beide behoren.
 
 $\text{ }J \cup K =$ {`r unique(sort(c(J, K)))`}
 
