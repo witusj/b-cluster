@@ -104,3 +104,11 @@ De **vereniging** van twee verzamelingen J en K, $\cup$, is de verzameling waarv
 $\text{ }J \cup K =$ {`r unique(sort(c(J, K)))`}
 
 **Vraag:** Zoek op wat de functie `unique()` doet.
+
+<br>
+<h4>$\mathbb{N}$ine $\mathbb{Z}$ulu $\mathbb{Q}$ueens $\mathbb{R}$uled $\mathbb{C}$hina</h4>
+In R (of iedere andere programmeertaal) kunnen we geen oneindige verzamelingen maken, zoals bijvoorbeeld **de verzameling $\mathbb{N}$ van positieve gehele getallen en het getal 0**:
+
+$\mathbb{N} =$ {`r 0:9` .......}
+
+**Vraag:** Waarom niet?
