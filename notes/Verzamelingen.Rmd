@@ -72,13 +72,35 @@ $\text{    }F \supset E$
 Stel we definieren twee verzamelingen G = {`r G`} en H = {`r H`} en I als de verzameling van elementen die zowel in G als H voorkomen.
 
 ```{r}
-G <- E
-H <- c(1, 2, 4)
+G <- c(1:5)
+H <- c(4:8)
 t4 <- G %in% H
-I <- H[t4]
-cat("De vector t3 bevat de uitkomsten van de test 'G komt voor in H':", t3, "en I bevat dus", length(I), "elementen.")
+I <- G[t4]
+
+cat("De vector t4 bevat de uitkomsten van de test 'G komt voor in H':", t4, "en I bevat dus", length(L), "elementen.")
+```
+
+De **doorsnede**, $\cap$, is de verzameling van elementen die zowel tot G als tot H behoren:
+
+$\text{ }G \cap H =$ {`r I`}
+
+<br>
+Stel we definieren twee verzamelingen J = {`r J`} en K = {`r K`} en L als de verzameling van elementen die zowel in J als K voorkomen.
+
+```{r}
+J <- E
+K <- c(1, 2, 4)
+t5 <- J %in% K
+L <- K[t5]
+cat("De vector t5 bevat de uitkomsten van de test 'J komt voor in K':", t5, "en L bevat dus", length(L), "elementen.")
 ```
 
 De **lege verzameling**, $\varnothing$, is een verzameling die geen enkel element bevat. In het bovenstaande voorbeeld zijn G en H **disjuncte** (elkaar uitsluitende) verzamelingen:
 
-$\text{ }G \cap H = \varnothing$
+$\text{ }J \cap K = \varnothing$
+
+De **vereniging** van twee verzamelingen J en K, $\cup$, is de verzameling waarvan de elementen tot A of tot B of tot beide behoren.
+
+$\text{ }J \cup K =$ {`r unique(sort(c(J, K)))`}
+
+**Vraag:** Zoek op wat de functie `unique()` doet.
