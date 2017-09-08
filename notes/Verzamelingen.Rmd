@@ -24,7 +24,7 @@ In bovenstaande code hebben we een variabele A benoemd en hieraan de eerste `r n
 Stel we hebben twee verzamelingen B en C en we beschrijven C als de verzameling van elementen uit B die aan een bepaald criterium voldoen.
 
 ```{r}
-B <- c(1:20)
+B <- 1:20
 t1 <- B < 10
 C <- B[t1]
 
@@ -72,12 +72,12 @@ $\text{    }F \supset E$
 Stel we definieren twee verzamelingen G = {`r G`} en H = {`r H`} en I als de verzameling van elementen die zowel in G als H voorkomen.
 
 ```{r}
-G <- c(1:5)
-H <- c(4:8)
+G <- 1:5
+H <- 4:8
 t4 <- G %in% H
 I <- G[t4]
 
-cat("De vector t4 bevat de uitkomsten van de test 'G komt voor in H':", t4, "en I bevat dus", length(L), "elementen.")
+cat("De vector t4 bevat de uitkomsten van de test 'G komt voor in H':", t4, "en I bevat dus", length(I), "elementen.")
 ```
 
 De **doorsnede**, $\cap$, is de verzameling van elementen die zowel tot G als tot H behoren:
@@ -107,7 +107,7 @@ $\text{ }J \cup K =$ {`r unique(sort(c(J, K)))`}
 
 <br>
 <h4>$\mathbb{N}$ine $\mathbb{Z}$ulu $\mathbb{Q}$ueens $\mathbb{R}$uled $\mathbb{C}$hina</h4>
-In R (of iedere andere programmeertaal) kunnen we geen oneindige verzamelingen maken, zoals bijvoorbeeld **de verzameling $\mathbb{N}$ van positieve gehele getallen en het getal 0**:
+In R (of iedere andere programmeertaal) kunnen we geen oneindige verzamelingen aanmaken, zoals bijvoorbeeld **de verzameling $\mathbb{N}$ van positieve gehele getallen en het getal 0**:
 
 $\mathbb{N} =$ {`r 0:9` .......}
 
