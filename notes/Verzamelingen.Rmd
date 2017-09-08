@@ -95,7 +95,7 @@ L <- K[t5]
 cat("De vector t5 bevat de uitkomsten van de test 'J komt voor in K':", t5, "en L bevat dus", length(L), "elementen.")
 ```
 
-De **lege verzameling**, $\varnothing$, is een verzameling die geen enkel element bevat. In het bovenstaande voorbeeld zijn G en H **disjuncte** (elkaar uitsluitende) verzamelingen:
+De **lege verzameling**, $\varnothing$, is een verzameling die geen enkel element bevat. In het bovenstaande voorbeeld zijn J en K **disjuncte** (elkaar uitsluitende) verzamelingen:
 
 $\text{ }J \cap K = \varnothing$
 
