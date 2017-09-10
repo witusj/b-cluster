@@ -130,17 +130,22 @@ De verzameling $\mathbb{R}$ (reële getallen) bevat alle rationale en irrational
 $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$
 
 <hr>
-<h4>Toepassing verzamelingsleer op kansberekening</4>
+<h4>Toepassing verzamelingenleer op kansberekening</h4>
 
 ```{r}
 library(ggplot2)
-d1 <- 1:6
-d2 <- 1:6
+D1 <- 1:6
+D2 <- 1:6
 
-outer(d1, d2, paste, sep = ",")
+outer(D1, D2, paste, sep = ",")
+```
+**Vraag:** Hoe groot is de verzameling van combinaties van twee verzamelingen D1 en D2 die beide bestaan uit de elementen {`r 1:6`}?
 
-dice <- expand.grid(dice1 = d1, dice2 = d2)
+
+```{r}
+dice <- expand.grid(dice1 = D1, dice2 = D2)
 dice$sum <- dice$dice1 + dice$dice2
 ggplot(dice, aes(sum)) + geom_bar(aes(fill = as.character(sum))) + scale_x_continuous(breaks = unique(dice$sum)) + theme(legend.position="none")
 ```
 
+**Vraag:** Wat is de kans dat iemand met twee dobbelstenen zes gooit?
