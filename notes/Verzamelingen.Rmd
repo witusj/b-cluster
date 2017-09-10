@@ -128,3 +128,19 @@ Irrationale getallen zijn getallen die niet uit kunnen worden uitgedrukt in een 
 De verzameling $\mathbb{R}$ (reële getallen) bevat alle rationale en irrationale getallen. $\mathbb{C}$ is de verzameling van alle complexe getallen (het is op dit moment voldoende om te weten dat het hier gaat om combinaties van alle reële getallen en met het imaginaire getal $\sqrt{-1}$). Er geldt dus:
 
 $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$
+
+<hr>
+<h4>Toepassing verzamelingsleer op kansberekening</4>
+
+```{r}
+library(ggplot2)
+d1 <- 1:6
+d2 <- 1:6
+
+outer(d1, d2, paste, sep = ",")
+
+dice <- expand.grid(dice1 = d1, dice2 = d2)
+dice$sum <- dice$dice1 + dice$dice2
+ggplot(dice, aes(sum)) + geom_bar(aes(fill = as.character(sum))) + scale_x_continuous(breaks = unique(dice$sum)) + theme(legend.position="none")
+```
+
