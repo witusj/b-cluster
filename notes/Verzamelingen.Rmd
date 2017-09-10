@@ -107,8 +107,22 @@ $\text{ }J \cup K =$ {`r unique(sort(c(J, K)))`}
 
 <br>
 <h4>$\mathbb{N}$ine $\mathbb{Z}$ulu $\mathbb{Q}$ueens $\mathbb{R}$uled $\mathbb{C}$hina</h4>
-In R (of iedere andere programmeertaal) kunnen we geen oneindige verzamelingen aanmaken, zoals bijvoorbeeld **de verzameling $\mathbb{N}$ van positieve gehele getallen en het getal 0**:
+In R (of iedere andere programmeertaal) kunnen we geen oneindige verzamelingen aanmaken, zoals bijvoorbeeld **de verzameling $\mathbb{N}$ van positieve gehele getallen en het getal 0** (natuurlijke getallen):
 
 $\mathbb{N} =$ {`r 0:9` .......}
 
 **Vraag:** Waarom niet?
+
+Alle positieve en negatieve gehele getallen en het getal 0 zijn elementen van de verzameling $\mathbb{Z}$ (gehele getallen):
+
+$\mathbb{Z} =$ {.......`r -4:4` .......}
+
+Alle combinaties $\frac ab$ met a, b $\in \mathbb{Z}$ en b $\neq$ 0 behoren tot de verzameling van quotiënten, $\mathbb{Q}$ (**ratio**nale getallen).
+
+**Vraag:** Toon aan dat geldt $\mathbb{Z} \subset \mathbb{Q}$.
+
+Irrationale getallen zijn getallen die niet uit kunnen worden uitgedrukt in een quotiënt van twee gehele getallen. Voorbeelden hiervan zijn $\sqrt{2}$ en $\pi$.
+
+De verzameling $\mathbb{R}$ (reële getallen) bevat alle rationale en irrationale getallen. $\mathbb{C}$ is de verzameling van alle complexe getallen (het is op dit moment voldoende om te weten dat het hier gaat om combinaties van alle reële getallen en met het imaginaire getal $\sqrt{-1}$). Er geldt dus:
+
+$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$
