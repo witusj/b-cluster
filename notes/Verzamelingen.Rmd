@@ -113,6 +113,7 @@ $\mathbb{N} =$ {`r 0:9` .......}
 
 **Vraag:** Waarom niet?
 
+<br>
 Alle positieve en negatieve gehele getallen en het getal 0 zijn elementen van de verzameling $\mathbb{Z}$ (gehele getallen):
 
 $\mathbb{Z} =$ {.......`r -4:4` .......}
@@ -121,6 +122,7 @@ Alle combinaties $\frac ab$ met a, b $\in \mathbb{Z}$ en b $\neq$ 0 behoren tot 
 
 **Vraag:** Toon aan dat geldt $\mathbb{Z} \subset \mathbb{Q}$.
 
+<br>
 Irrationale getallen zijn getallen die niet uit kunnen worden uitgedrukt in een quotiënt van twee gehele getallen. Voorbeelden hiervan zijn $\sqrt{2}$ en $\pi$.
 
 De verzameling $\mathbb{R}$ (reële getallen) bevat alle rationale en irrationale getallen. $\mathbb{C}$ is de verzameling van alle complexe getallen (het is op dit moment voldoende om te weten dat het hier gaat om combinaties van alle reële getallen en met het imaginaire getal $\sqrt{-1}$). Er geldt dus:
