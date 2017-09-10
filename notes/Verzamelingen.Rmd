@@ -133,7 +133,6 @@ $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \ma
 <h4>Toepassing verzamelingenleer op kansberekening</h4>
 
 ```{r}
-library(ggplot2)
 D1 <- 1:6
 D2 <- 1:6
 
@@ -143,6 +142,7 @@ outer(D1, D2, paste, sep = ",")
 
 
 ```{r}
+library(ggplot2)
 dice <- expand.grid(dice1 = D1, dice2 = D2)
 dice$sum <- dice$dice1 + dice$dice2
 ggplot(dice, aes(sum)) + geom_bar(aes(fill = as.character(sum))) + scale_x_continuous(breaks = unique(dice$sum)) + theme(legend.position="none")
