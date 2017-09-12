@@ -1,0 +1,37 @@
+---
+title: "Wiskunde voor Statistiek"
+subtitle: "H2 - Bewerkingen"
+author: "Witek ten Hove"
+output: html_notebook
+---
+<hr>
+Deze notebook hoort bij het boek ["Wiskunde voor Statistiek"](https://shop.coutinho.nl/store_nl/wiskunde-voor-statistiek.html) en demonstreert de concepten die hierin worden besproken met behulp van R.
+<hr>
+
+Optellen is het resulaat van twee of meerdere optellingen
+```{r}
+
+## Een functie 
+optelling <- function(start, n) {
+  resultaat = 0
+  
+  for(i in 0:n) {
+    resultaat <- start * (i == 0) +
+                 (resultaat + 1 * (n > 0) - 1 * (n < 0)) * 
+                 (i != 0)
+    cat(resultaat, " | ")
+  }
+  return(resultaat)
+}
+
+# getallenlijn van -3 tot +5
+optelling(-3, 8)
+
+# 2 + 3
+optelling(optelling(0, 2), 3)
+
+# 4 - 6
+optelling(optelling(0, 4), -6)
+
+```
+
