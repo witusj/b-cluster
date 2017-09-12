@@ -181,7 +181,7 @@ Deze notebook hoort bij het boek <a href="https://shop.coutinho.nl/store_nl/wisk
 <p>Optellen is het resulaat van twee of meerdere optellingen</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgRWVuIHRlbGZ1bmN0aWVcbm9wdGVsbGluZyA8LSBmdW5jdGlvbihzdGFydCwgbikge1xuICByZXN1bHRhYXQgPSAwXG4gIFxuICBmb3IoaSBpbiAwOm4pIHtcbiAgICByZXN1bHRhYXQgPC0gc3RhcnQgKiAoaSA9PSAwKSArXG4gICAgICAgICAgICAgICAgIChyZXN1bHRhYXQgKyAxICogKG4gPiAwKSAtIDEgKiAobiA8IDApKSAqIFxuICAgICAgICAgICAgICAgICAoaSAhPSAwKVxuICAgIGNhdChyZXN1bHRhYXQsIFwiIHwgXCIpXG4gIH1cbiAgcmV0dXJuKHJlc3VsdGFhdClcbn1cbiMgZ2V0YWxsZW5saWpuIHZhbiAtMyB0b3QgKzVcbm9wdGVsbGluZygtMywgOClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgRWVuIHRlbGZ1bmN0aWVcbm9wdGVsbGluZyA8LSBmdW5jdGlvbihzdGFydCwgbikge1xuICByZXN1bHRhYXQgPSAwXG4gIFxuICBmb3IoaSBpbiAwOm4pIHtcbiAgICByZXN1bHRhYXQgPC0gc3RhcnQgKiAoaSA9PSAwKSArXG4gICAgICAgICAgICAgICAgIChyZXN1bHRhYXQgKyAxICogKG4gPiAwKSAtIDEgKiAobiA8IDApKSAqIFxuICAgICAgICAgICAgICAgICAoaSAhPSAwKVxuICAgIGNhdChyZXN1bHRhYXQsIFwiIHwgXCIpXG4gIH1cbiAgY2F0KFwiIC0tPiBcIilcbiAgcmV0dXJuKHJlc3VsdGFhdClcbn1cbiMgZ2V0YWxsZW5saWpuIHZhbiAtMyB0b3QgKzVcbm9wdGVsbGluZygtMywgOClcbmBgYCJ9 -->
 <pre class="r"><code>## Een telfunctie
 optelling &lt;- function(start, n) {
   resultaat = 0
@@ -192,33 +192,34 @@ optelling &lt;- function(start, n) {
                  (i != 0)
     cat(resultaat, &quot; | &quot;)
   }
+  cat(&quot; --&gt; &quot;)
   return(resultaat)
 }
 # getallenlijn van -3 tot +5
 optelling(-3, 8)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiLTMgIHwgLTIgIHwgLTEgIHwgMCAgfCAxICB8IDIgIHwgMyAgfCA0ICB8IDUgIHwgWzFdIDVcbiJ9 -->
-<pre><code>-3  | -2  | -1  | 0  | 1  | 2  | 3  | 4  | 5  | [1] 5</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiLTMgIHwgLTIgIHwgLTEgIHwgMCAgfCAxICB8IDIgIHwgMyAgfCA0ICB8IDUgIHwgIC0tPiBbMV0gNVxuIn0= -->
+<pre><code>-3  | -2  | -1  | 0  | 1  | 2  | 3  | 4  | 5  |  --&gt; [1] 5</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyAyICsgM1xub3B0ZWxsaW5nKG9wdGVsbGluZygwLCAyKSwgMylcbmBgYCJ9 -->
 <pre class="r"><code># 2 + 3
 optelling(optelling(0, 2), 3)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiMCAgfCAxICB8IDIgIHwgMiAgfCAzICB8IDQgIHwgNSAgfCBbMV0gNVxuIn0= -->
-<pre><code>0  | 1  | 2  | 2  | 3  | 4  | 5  | [1] 5</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiMCAgfCAxICB8IDIgIHwgIC0tPiAyICB8IDMgIHwgNCAgfCA1ICB8ICAtLT4gWzFdIDVcbiJ9 -->
+<pre><code>0  | 1  | 2  |  --&gt; 2  | 3  | 4  | 5  |  --&gt; [1] 5</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyA0IC0gNlxub3B0ZWxsaW5nKG9wdGVsbGluZygwLCA0KSwgLTYpXG5gYGAifQ== -->
 <pre class="r"><code># 4 - 6
 optelling(optelling(0, 4), -6)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiMCAgfCAxICB8IDIgIHwgMyAgfCA0ICB8IDQgIHwgMyAgfCAyICB8IDEgIHwgMCAgfCAtMSAgfCAtMiAgfCBbMV0gLTJcbiJ9 -->
-<pre><code>0  | 1  | 2  | 3  | 4  | 4  | 3  | 2  | 1  | 0  | -1  | -2  | [1] -2</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiMCAgfCAxICB8IDIgIHwgMyAgfCA0ICB8ICAtLT4gNCAgfCAzICB8IDIgIHwgMSAgfCAwICB8IC0xICB8IC0yICB8ICAtLT4gWzFdIC0yXG4ifQ== -->
+<pre><code>0  | 1  | 2  | 3  | 4  |  --&gt; 4  | 3  | 2  | 1  | 0  | -1  | -2  |  --&gt; [1] -2</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiV2lza3VuZGUgdm9vciBTdGF0aXN0aWVrIgpzdWJ0aXRsZTogIkgyIC0gQmV3ZXJraW5nZW4iCmF1dGhvcjogIldpdGVrIHRlbiBIb3ZlIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCjxocj4KRGV6ZSBub3RlYm9vayBob29ydCBiaWogaGV0IGJvZWsgWyJXaXNrdW5kZSB2b29yIFN0YXRpc3RpZWsiXShodHRwczovL3Nob3AuY291dGluaG8ubmwvc3RvcmVfbmwvd2lza3VuZGUtdm9vci1zdGF0aXN0aWVrLmh0bWwpIGVuIGRlbW9uc3RyZWVydCBkZSBjb25jZXB0ZW4gZGllIGhpZXJpbiB3b3JkZW4gYmVzcHJva2VuIG1ldCBiZWh1bHAgdmFuIFIuCjxocj4KCk9wdGVsbGVuIGlzIGhldCByZXN1bGFhdCB2YW4gdHdlZSBvZiBtZWVyZGVyZSBvcHRlbGxpbmdlbgpgYGB7cn0KCiMjIEVlbiB0ZWxmdW5jdGllCm9wdGVsbGluZyA8LSBmdW5jdGlvbihzdGFydCwgbikgewogIHJlc3VsdGFhdCA9IDAKICAKICBmb3IoaSBpbiAwOm4pIHsKICAgIHJlc3VsdGFhdCA8LSBzdGFydCAqIChpID09IDApICsKICAgICAgICAgICAgICAgICAocmVzdWx0YWF0ICsgMSAqIChuID4gMCkgLSAxICogKG4gPCAwKSkgKiAKICAgICAgICAgICAgICAgICAoaSAhPSAwKQogICAgY2F0KHJlc3VsdGFhdCwgIiB8ICIpCiAgfQogIHJldHVybihyZXN1bHRhYXQpCn0KCiMgZ2V0YWxsZW5saWpuIHZhbiAtMyB0b3QgKzUKb3B0ZWxsaW5nKC0zLCA4KQoKIyAyICsgMwpvcHRlbGxpbmcob3B0ZWxsaW5nKDAsIDIpLCAzKQoKIyA0IC0gNgpvcHRlbGxpbmcob3B0ZWxsaW5nKDAsIDQpLCAtNikKCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiV2lza3VuZGUgdm9vciBTdGF0aXN0aWVrIgpzdWJ0aXRsZTogIkgyIC0gQmV3ZXJraW5nZW4iCmF1dGhvcjogIldpdGVrIHRlbiBIb3ZlIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCjxocj4KRGV6ZSBub3RlYm9vayBob29ydCBiaWogaGV0IGJvZWsgWyJXaXNrdW5kZSB2b29yIFN0YXRpc3RpZWsiXShodHRwczovL3Nob3AuY291dGluaG8ubmwvc3RvcmVfbmwvd2lza3VuZGUtdm9vci1zdGF0aXN0aWVrLmh0bWwpIGVuIGRlbW9uc3RyZWVydCBkZSBjb25jZXB0ZW4gZGllIGhpZXJpbiB3b3JkZW4gYmVzcHJva2VuIG1ldCBiZWh1bHAgdmFuIFIuCjxocj4KCk9wdGVsbGVuIGlzIGhldCByZXN1bGFhdCB2YW4gdHdlZSBvZiBtZWVyZGVyZSBvcHRlbGxpbmdlbgpgYGB7cn0KCiMjIEVlbiB0ZWxmdW5jdGllCm9wdGVsbGluZyA8LSBmdW5jdGlvbihzdGFydCwgbikgewogIHJlc3VsdGFhdCA9IDAKICAKICBmb3IoaSBpbiAwOm4pIHsKICAgIHJlc3VsdGFhdCA8LSBzdGFydCAqIChpID09IDApICsKICAgICAgICAgICAgICAgICAocmVzdWx0YWF0ICsgMSAqIChuID4gMCkgLSAxICogKG4gPCAwKSkgKiAKICAgICAgICAgICAgICAgICAoaSAhPSAwKQogICAgY2F0KHJlc3VsdGFhdCwgIiB8ICIpCiAgfQogIGNhdCgiIC0tPiAiKQogIHJldHVybihyZXN1bHRhYXQpCn0KCiMgZ2V0YWxsZW5saWpuIHZhbiAtMyB0b3QgKzUKb3B0ZWxsaW5nKC0zLCA4KQoKIyAyICsgMwpvcHRlbGxpbmcob3B0ZWxsaW5nKDAsIDIpLCAzKQoKIyA0IC0gNgpvcHRlbGxpbmcob3B0ZWxsaW5nKDAsIDQpLCAtNikKCmBgYAoK</div>
 
 
 

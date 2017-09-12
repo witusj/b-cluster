@@ -21,6 +21,7 @@ optelling <- function(start, n) {
                  (i != 0)
     cat(resultaat, " | ")
   }
+  cat(" --> ")
   return(resultaat)
 }
 
