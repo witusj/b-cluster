@@ -11,7 +11,7 @@ Deze notebook hoort bij het boek ["Wiskunde voor Statistiek"](https://shop.couti
 Optellen is het resulaat van twee of meerdere optellingen
 ```{r}
 
-## Een functie 
+## Een telfunctie
 optelling <- function(start, n) {
   resultaat = 0
   
