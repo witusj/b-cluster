@@ -36,3 +36,39 @@ optelling(optelling(0, 4), -6)
 
 ```
 
+Vermenigvuldigen is hetzelfde als herhaald optellen van gelijke termen.
+```{r}
+vermenigvuldig <- function(n, m) {
+  a <- optelling(0, n)
+  j <- 1
+  
+  while(j < m) {
+    a <- optelling(a, n)
+    j <- j + 1
+    }
+  return(a)
+}
+
+vermenigvuldig(3, 6)
+
+3*6
+```
+
+Machtsverheffen is hetzelfde als herhaald vermenigvuldigen van gelijke factoren.
+
+```{r}
+
+macht <- function(n, p) {
+  b <- vermenigvuldig(n, 1)
+  k <- 1
+  
+  while(k < p) {
+    b <- vermenigvuldig(b, n)
+    k <- k + 1
+  }
+  return(b)
+}
+macht(2,5)
+
+2^5
+```
