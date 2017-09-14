@@ -20,7 +20,7 @@ ggplot(sampleFair) +
 
 ```{r fig.width=4,fig.height=3}
 library(tidyverse)
-distNF1 <- c(rep(1, 2), rep(2, 3), 3, 4, 5, 6)
+distNF1 <- c(rep(1, 2), rep(2, 2), rep(3, 3), 4, 5, 6)
 sampleNF1 <- data.frame(result = sample(x = distNF1, size = 100000, replace = TRUE))
 
 ggplot(sampleNF1) +
