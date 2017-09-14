@@ -8,6 +8,7 @@ output: html_notebook
 Deze notebook hoort bij het boek ["Wiskunde voor Statistiek"](https://shop.coutinho.nl/store_nl/wiskunde-voor-statistiek.html) en demonstreert de concepten die hierin worden besproken met behulp van R.
 <hr>
 
+<br>
 Optellen is het resulaat van twee of meerdere optellingen
 ```{r}
 
@@ -36,6 +37,7 @@ optelling(optelling(0, 4), -6)
 
 ```
 
+<br>
 Vermenigvuldigen is hetzelfde als herhaald optellen van gelijke termen.
 ```{r}
 vermenigvuldig <- function(n, m) {
@@ -54,6 +56,7 @@ vermenigvuldig(3, 6)
 3*6
 ```
 
+<br>
 Machtsverheffen is hetzelfde als herhaald vermenigvuldigen van gelijke factoren.
 
 ```{r}
