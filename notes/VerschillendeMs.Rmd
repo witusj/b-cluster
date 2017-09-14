@@ -3,7 +3,7 @@ title: "Verschil tussen twee gemiddelden"
 output: html_notebook
 ---
 
-Ideale dobbelsteen
+## Ideale dobbelsteen
 
 ```{r fig.width=4,fig.height=3}
 library(tidyverse)
@@ -16,7 +16,7 @@ ggplot(sampleFair) +
   theme(legend.position="none")
 ```
 
-Dobbelsteen 1
+## Dobbelsteen 1
 
 ```{r fig.width=4,fig.height=3}
 library(tidyverse)
@@ -30,7 +30,8 @@ ggplot(sampleNF1) +
 
 ```
 
-Dobbelsteen 2
+## Dobbelsteen 2
+
 ```{r fig.width=4,fig.height=3}
 library(tidyverse)
 distNF2 <- c(1, 2, 3, 4, rep(5, 4), rep(6, 5))
@@ -43,6 +44,7 @@ ggplot(sampleNF2) +
 ```
 
 
+## Boxplot
 
 ```{r fig.width=4,fig.height=3}
 type <- c(rep("fair", dim(sampleFair)[1]), rep("nf1", dim(sampleNF1)[1]), rep("nf2", dim(sampleNF2)[1]))
