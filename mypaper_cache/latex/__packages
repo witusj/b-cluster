@@ -1,0 +1,12 @@
+base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
+Rcpp
+rbenchmark
+devtools
+rmarkdown
+ggplot2

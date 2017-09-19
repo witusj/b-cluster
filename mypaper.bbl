@@ -1,0 +1,34 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Allaire, Cheng, Xie, McPherson, Chang, Allen,
+  Wickham, Atkins, Hyndman, and Arslan}{Allaire et~al.}{2017}]{CRAN:rmarkdown}
+Allaire, J., J.~Cheng, Y.~Xie, J.~McPherson, W.~Chang, J.~Allen, H.~Wickham,
+  A.~Atkins, R.~Hyndman, and R.~Arslan (2017).
+\newblock {\em rmarkdown: Dynamic Documents for R}.
+\newblock R package version 1.6.
+
+\bibitem[\protect\citeauthoryear{Allaire, {R Foundation}, Wickham, {Journal of
+  Statistical Software}, Xie, Vaidyanathan, {Association for Computing
+  Machinery}, Boettiger, {Elsevier}, Broman, Mueller, Quast, Pruim, Marwick,
+  Wickham, Keyes, and Yu}{Allaire et~al.}{2017}]{CRAN:rticles}
+Allaire, J., {R Foundation}, H.~Wickham, {Journal of Statistical Software},
+  Y.~Xie, R.~Vaidyanathan, {Association for Computing Machinery}, C.~Boettiger,
+  {Elsevier}, K.~Broman, K.~Mueller, B.~Quast, R.~Pruim, B.~Marwick,
+  C.~Wickham, O.~Keyes, and M.~Yu (2017).
+\newblock {\em rticles: Article Formats for R Markdown}.
+\newblock R package version 0.4.1.
+
+\bibitem[\protect\citeauthoryear{Eddelbuettel and Balamuta}{Eddelbuettel and
+  Balamuta}{2017}]{PeerJ:Rcpp}
+Eddelbuettel, D. and J.~J. Balamuta (2017, August).
+\newblock Extending \textit{R} with \textit{C++}: A brief introduction to
+  \textit{Rcpp}.
+\newblock {\em PeerJ Preprints\/}~{\em 5}, e3188v1.
+
+\bibitem[\protect\citeauthoryear{Xie}{Xie}{2017}]{CRAN:knitr}
+Xie, Y. (2017).
+\newblock {\em knitr: A General-Purpose Package for Dynamic Report Generation
+  in R}.
+\newblock R package version 1.17.
+
+\end{thebibliography}
