@@ -37,6 +37,7 @@ vis_dat(rawDF)
 De variabele `WoLastnu` bevat `r n <- dim(rawDF[is.na(rawDF$WoLastnu),])[1]; n` NAs (`r round(100*n/r)`%). We kunnen heel makkelijk alle kolommen deselecteren die teveel NAs bevatten.
 
 ```{r}
+library(tidyverse)
 newDF <- rawDF %>% select(which(colMeans(is.na(.)) < 0.5))
 summary(newDF)
 ```
