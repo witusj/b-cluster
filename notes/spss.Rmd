@@ -13,6 +13,7 @@ library(foreign)
 url <- "https://github.com/witusj/b-cluster/blob/master/notes/data/Data%20woonwensen%20studenten.sav?raw=true"
 rawDF <- read.spss(url, to.data.frame = TRUE)
 rbind(head(rawDF, 5), tail(rawDF, 5))
+attrVec <- attributes(rawDF)$variable.labels #Bewaar de labels in een aparte vector voor later
 ```
 
 <br>
@@ -38,7 +39,9 @@ De variabele `WoLastnu` bevat `r n <- dim(rawDF[is.na(rawDF$WoLastnu),])[1]; n` 
 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
-newDF <- rawDF %>% select(which(colMeans(is.na(.)) < 0.5))
+selection <- which(colMeans(is.na(rawDF)) < 0.5) #Bewaar kolomnummers van de variabelen met laag percentage NA
+newDF <- rawDF[selection] 
+attributes(newDF)$variable.labels <- attrVec[selection] #Voeg de correcte labels toe aan de geselecteerde variabelen
 vis_dat(newDF)
 ```
 
