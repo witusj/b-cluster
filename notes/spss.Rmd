@@ -39,7 +39,7 @@ De variabele `WoLastnu` bevat `r n <- dim(rawDF[is.na(rawDF$WoLastnu),])[1]; n` 
 ```{r}
 library(tidyverse)
 newDF <- rawDF %>% select(which(colMeans(is.na(.)) < 0.5))
-summary(newDF)
+vis_dat(newDF)
 ```
 
 Er zijn nu nog `r m <- dim(newDF)[2]; m` variabelen over.
