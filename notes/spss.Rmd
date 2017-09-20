@@ -1,11 +1,11 @@
 ---
-title: "Laad SAV-bestand (SPSS) in R"
+title: "SAV-bestanden (SPSS) in R"
 output: html_notebook
 ---
 
 In deze notebook wordt besproken hoe je een SPSS-bestand rechtstreeks in R kunt inlezen.<br><br>
 
-##### Use the `foreign` library and de `read.spss()` function.
+#### 1. Gebruik de `foreign` library en de `read.spss()` functie en lees de data in
 
 ```{r, message=FALSE, warning=FALSE}
 library(foreign)
@@ -15,13 +15,18 @@ rawDF <- read.spss(url, to.data.frame = TRUE)
 rbind(head(rawDF, 5), tail(rawDF, 5))
 ```
 
-##### Beoordeel de kwaliteit van de data
+<br>
+
+#### 2. Beoordeel de kwaliteit van de data
 
 ```{r}
 str(rawDF)
 summary(rawDF)
 ```
 
+<br>
+
+#### 3. Bewerk de data
 In totaal bevat de data `r r <- dim(rawDF)[1]; r` rijen (observaties) en `r k<- dim(rawDF)[2]; k` kolommen (variabelen). Veel variabelen bevatten lege waarden (NA). We kunnen dit nader onderzoeken door de data visueel te beoordelen.
 
 ```{r}
