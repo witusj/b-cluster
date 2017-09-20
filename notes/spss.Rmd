@@ -41,3 +41,4 @@ newDF <- rawDF %>% select(which(colMeans(is.na(.)) < 0.5))
 summary(newDF)
 ```
 
+Er zijn nu nog `r m <- dim(newDF)[2]; m` variabelen over.
