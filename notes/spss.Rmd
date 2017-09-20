@@ -1,0 +1,38 @@
+---
+title: "Laad SAV-bestand (SPSS) in R"
+output: html_notebook
+---
+
+In deze notebook wordt besproken hoe je een SPSS-bestand rechtstreeks in R kunt inlezen.<br><br>
+
+##### Use the `foreign` library and de `read.spss()` function.
+
+```{r, message=FALSE, warning=FALSE}
+library(foreign)
+
+url <- "https://github.com/witusj/b-cluster/blob/master/notes/data/Data%20woonwensen%20studenten.sav?raw=true"
+rawDF <- read.spss(url, to.data.frame = TRUE)
+rbind(head(rawDF, 5), tail(rawDF, 5))
+```
+
+##### Beoordeel de kwaliteit van de data
+
+```{r}
+str(rawDF)
+summary(rawDF)
+```
+
+In totaal bevat de data `r r <- dim(rawDF)[1]; r` rijen (observaties) en `r k<- dim(rawDF)[2]; k` kolommen (variabelen). Veel variabelen bevatten lege waarden (NA). We kunnen dit nader onderzoeken door de data visueel te beoordelen.
+
+```{r}
+library(visdat)
+vis_dat(rawDF)
+```
+
+De variabele `WoLastnu` bevat `r n <- dim(rawDF[is.na(rawDF$WoLastnu),])[1]; n` NAs (`r round(100*n/r)`%). We kunnen heel makkelijk alle kolommen deselecteren die teveel NAs bevatten.
+
+```{r}
+newDF <- rawDF %>% select(which(colMeans(is.na(.)) < 0.5))
+summary(newDF)
+```
+
