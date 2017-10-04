@@ -45,4 +45,16 @@ attributes(newDF)$variable.labels <- attrVec[selection] #Voeg de correcte labels
 vis_dat(newDF)
 ```
 
-Er zijn nu nog `r m <- dim(newDF)[2]; m` variabelen over.
+Er zijn nu nog `r m <- dim(newDF)[2]; m` variabelen over. We zien dat de dataset bestaat uit variabelen van het type (`class`) categorisch (`factor`) en numeriek (`numeric`). De numerieke variabelen kunnen we weergeven in een boxplot.
+
+```{r, message=FALSE, warning=FALSE}
+library(reshape2)
+varFilter <- sapply(newDF, is.numeric)
+numDF <- newDF[varFilter]
+numDF.long <- melt(numDF)
+ggplot(data = numDF.long, aes(x = variable, y = value)) + 
+  stat_boxplot(na.rm = TRUE) +
+  facet_wrap( ~ variable, scales="free")
+```
+
+
