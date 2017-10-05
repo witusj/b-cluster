@@ -57,4 +57,28 @@ ggplot(data = numDF.long, aes(x = variable, y = value)) +
   facet_wrap( ~ variable, scales="free")
 ```
 
+```{r}
+ggplot(data = newDF) + 
+  geom_bar(aes(x = Geslacht, fill = as.factor(Gebjaar)))
+
+ggplot(data = newDF) + 
+  geom_bar(aes(x = Opleiding, fill = Geslacht)) +
+  coord_flip() +
+  theme(legend.position = "top")
+```
+
+```{r}
+library(dplyr)
+with(newDF, table(Opleiding, Geslacht))
+
+newDF <- newDF %>% mutate(., Leeftijd = 2017 - Gebjaar) %>% filter(., Leeftijd > 0)
+newDF %>%
+  group_by(Opleiding) %>%
+  summarise(
+    n = n(),
+    Leeftijd = mean(Leeftijd, na.rm = TRUE)
+  ) %>%
+  filter(n > 1)
+
+```
 
