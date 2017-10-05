@@ -1,5 +1,5 @@
 ---
-title: "SAV-bestanden (SPSS) in R"
+title: "Practicum SPSS in R"
 output: html_notebook
 ---
 
