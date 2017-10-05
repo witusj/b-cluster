@@ -1,9 +1,9 @@
 ---
-title: "Practicum SPSS in R"
+title: "Practicum SPSS 2 in R"
 output: html_notebook
 ---
 
-In deze notebook wordt besproken hoe je een SPSS-bestand rechtstreeks in R kunt inlezen.<br><br>
+In deze notebook wordt besproken hoe je de opdrachten uit "Practicum SPSS 2" in R kunt uitvoeren.<br><br>
 
 #### 1 - Gebruik de `foreign` library en de `read.spss()` functie en lees de data in
 
