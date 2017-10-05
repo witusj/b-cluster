@@ -77,8 +77,6 @@ newDF %>%
   summarise(
     n = n(),
     Leeftijd = mean(Leeftijd, na.rm = TRUE)
-  ) %>%
-  filter(n > 1)
-
+  )
 ```
 
