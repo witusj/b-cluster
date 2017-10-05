@@ -91,12 +91,32 @@ newDF %>%
     Leeftijd = mean(Leeftijd, na.rm = TRUE)
   )
 ```
+<br>
 
+#### 5 - Maak tabellen en grafieken van de variabelen waarmee je de onderzoeksvragen kunt beantwoorden.
+##### 5.1 - Wat is de huidige woonsituatie van de propedeuse studenten?
 
 ```{r}
 as.data.frame(with(newDF, table(WoSitnu)))
 
 ggplot(data = newDF) + 
   geom_bar(aes(x = "Woonsituatie", fill = WoSitnu), start=0)
+```
+
+##### 5.2 - Hoe tevreden zijn studenten over deze woonsituatie?
+```{r}
+tevDF <- newDF %>%
+  group_by(WoSitnu) %>%
+  summarise(
+    n = n(),
+    Tevreden = mean(Tevreden, na.rm = TRUE)
+  )
+tevDF
+
+ggplot(data = tevDF) + 
+  geom_col(aes(x = WoSitnu, y = Tevreden, fill = WoSitnu)) +
+  coord_flip() +
+  theme(legend.position = "none")
+
 ```
 
