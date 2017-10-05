@@ -100,7 +100,7 @@ newDF %>%
 as.data.frame(with(newDF, table(WoSitnu)))
 
 ggplot(data = newDF) + 
-  geom_bar(aes(x = "Woonsituatie", fill = WoSitnu), start=0)
+  geom_bar(aes(x = "Woonsituatie", fill = WoSitnu))
 ```
 
 ##### 5.2 - Hoe tevreden zijn studenten over deze woonsituatie?
