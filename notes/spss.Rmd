@@ -96,11 +96,14 @@ newDF %>%
 #### 5 - Maak tabellen en grafieken van de variabelen waarmee je de onderzoeksvragen kunt beantwoorden.
 ##### 5.1 - Wat is de huidige woonsituatie van de propedeuse studenten?
 
-```{r}
-as.data.frame(with(newDF, table(WoSitnu)))
+```{r results='asis'}
+woNuDF <- as.data.frame(with(newDF, table(WoSitnu)))
+woNuDF <- mutate(woNuDF, Relative = prop.table(Freq))
+woNuDF
 
 ggplot(data = newDF) + 
-  geom_bar(aes(x = "Woonsituatie", fill = WoSitnu))
+  geom_bar(aes(x = "Woonsituatie", fill = WoSitnu)) +
+  coord_polar("y", start=0)
 ```
 
 ##### 5.2 - Hoe tevreden zijn studenten over deze woonsituatie?
