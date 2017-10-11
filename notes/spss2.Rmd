@@ -125,6 +125,7 @@ ggplot(data = tevDF) +
 Schrijf de data weg in een csv-bestand.
 
 ```{r}
-write.csv(newDF, "data/data_woonwensen.csv")
+write.csv(rawDF, "data/data_woonwensen_ruw.csv")
+write.csv(newDF, "data/data_woonwensen_schoon.csv")
 ```
 
