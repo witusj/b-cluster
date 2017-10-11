@@ -122,3 +122,9 @@ ggplot(data = tevDF) +
   theme(legend.position = "none")
 
 ```
+Schrijf de data weg in een csv-bestand.
+
+```{r}
+write.csv(newDF, "data/data_woonwensen.csv")
+```
+
