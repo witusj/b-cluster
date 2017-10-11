@@ -1,0 +1,124 @@
+---
+title: "Practicum SPSS 2 in R"
+output: html_notebook
+---
+
+In deze notebook wordt besproken hoe je de opdrachten uit "Practicum SPSS 2" in R kunt uitvoeren.<br><br>
+
+#### 1 - Gebruik de `foreign` library en de `read.spss()` functie en lees de data in.
+
+```{r, message=FALSE, warning=FALSE}
+library(foreign)
+
+url <- "https://github.com/witusj/b-cluster/blob/master/notes/data/Data%20woonwensen%20studenten.sav?raw=true"
+rawDF <- read.spss(url, to.data.frame = TRUE)
+rbind(head(rawDF, 5), tail(rawDF, 5))
+attrVec <- attributes(rawDF)$variable.labels #Bewaar de labels in een aparte vector voor later
+```
+
+<br>
+
+#### 2 - Beoordeel de kwaliteit van de data.
+
+```{r}
+str(rawDF)
+summary(rawDF)
+```
+
+<br>
+
+#### 3 - Bewerk de data.
+In totaal bevat de data `r r <- dim(rawDF)[1]; r` rijen (observaties) en `r k<- dim(rawDF)[2]; k` kolommen (variabelen). Veel variabelen bevatten lege waarden (NA). We kunnen dit nader onderzoeken door de data visueel te beoordelen.
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+library(visdat)
+vis_dat(rawDF)
+```
+
+De variabele `WoLastnu` bevat `r n <- dim(rawDF[is.na(rawDF$WoLastnu),])[1]; n` NAs (`r round(100*n/r)`%). We kunnen heel makkelijk alle kolommen deselecteren die teveel NAs bevatten.
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+selection <- which(colMeans(is.na(rawDF)) < 0.5) #Bewaar kolomnummers van de variabelen met laag percentage NA
+newDF <- rawDF[selection] 
+attributes(newDF)$variable.labels <- attrVec[selection] #Voeg de correcte labels toe aan de geselecteerde variabelen
+vis_dat(newDF)
+```
+
+Er zijn nu nog `r m <- dim(newDF)[2]; m` variabelen over. We zien dat de dataset bestaat uit variabelen van het type (`class`) categorisch (`factor`) en numeriek (`numeric`). De numerieke variabelen kunnen we weergeven in een boxplot.
+
+```{r, message=FALSE, warning=FALSE}
+library(reshape2)
+varFilter <- sapply(newDF, is.numeric)
+numDF <- newDF[varFilter]
+numDF.long <- melt(numDF)
+ggplot(data = numDF.long, aes(x = variable, y = value)) + 
+  stat_boxplot(na.rm = TRUE) +
+  facet_wrap( ~ variable, scales="free")
+```
+<br>
+
+#### 4 - Beschrijf de respondenten a.d.h.v. de achtergrondvariabelen.
+##### 4.1 - Maak grafieken van geslacht, leeftijd en opleiding van de studenten.
+```{r}
+ggplot(data = newDF) + 
+  geom_bar(aes(x = Geslacht, fill = as.factor(Gebjaar)))
+
+ggplot(data = newDF) + 
+  geom_bar(aes(x = Opleiding, fill = Geslacht)) +
+  coord_flip() +
+  theme(legend.position = "top")
+```
+
+<br>
+
+##### 4.2 - Maak een kruistabel van opleiding en geslacht.
+
+```{r}
+library(dplyr)
+with(newDF, table(Opleiding, Geslacht))
+```
+
+<br>
+
+##### 4.3 - Geef een overzicht van de gemiddelde leeftijd per opleiding
+```{r}
+newDF <- newDF %>% mutate(., Leeftijd = 2017 - Gebjaar) %>% filter(., Leeftijd > 0)
+newDF %>%
+  group_by(Opleiding) %>%
+  summarise(
+    n = n(),
+    Leeftijd = mean(Leeftijd, na.rm = TRUE)
+  )
+```
+<br>
+
+#### 5 - Maak tabellen en grafieken van de variabelen waarmee je de onderzoeksvragen kunt beantwoorden.
+##### 5.1 - Wat is de huidige woonsituatie van de propedeuse studenten?
+
+```{r results='asis'}
+woNuDF <- as.data.frame(with(newDF, table(WoSitnu)))
+woNuDF <- mutate(woNuDF, Relative = prop.table(Freq))
+woNuDF
+
+ggplot(data = newDF) + 
+  geom_bar(aes(x = "Woonsituatie", fill = WoSitnu)) +
+  coord_polar("y", start=0)
+```
+
+##### 5.2 - Hoe tevreden zijn studenten over deze woonsituatie?
+```{r}
+tevDF <- newDF %>%
+  group_by(WoSitnu) %>%
+  summarise(
+    n = n(),
+    Tevreden = mean(Tevreden, na.rm = TRUE)
+  )
+tevDF
+
+ggplot(data = tevDF) + 
+  geom_col(aes(x = WoSitnu, y = Tevreden, fill = WoSitnu)) +
+  coord_flip() +
+  theme(legend.position = "none")
+
+```
