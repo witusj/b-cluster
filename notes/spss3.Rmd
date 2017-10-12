@@ -56,7 +56,7 @@ tabVM <- rbind(tabVM, totVM)
 tabVM
 ```
 
-We hebben ook een set van variabelen (Verhuismotief - begint met `VM`) die één waarde uit een set van twee aan kan nemen (wel/niet). Dit type data noemen we `boolean`. We gaan de kolommen combineren in twee kolommen: key en de value. Daarna kunnen we tabellen met verhoudingen bouwen. In de eerste kolom wordt het aantal antwoorden geteld (`count`), in de tweede worden de aantallen gerelateerd aan het totaal aantal gegeven antwoorden en in de derde kolom worden de aantallen gerelateerd aan het aantal studenten dat antwoord heeft gegeven.
+We hebben een andere set van variabelen (Omgevingsaaspecten - begint met `Omge`) die één waarde uit een set van meerdere aan kan nemen (van `zeer onbelangrijk` tot `zeer belangrijk`) - `multiple response`. Ook deze kolommen combineren we in twee kolommen: key en de value. Daarna kunnen we een tabel bouwen waaruit we kunnen aflezen in welke mate aspecten belangrijk zijn voor een woningkeuze. In een grafiek `bar chart` worden de verhoudingen beter zichtbaar.
 
 ```{r message=FALSE, warning=FALSE}
 library(knitr)
