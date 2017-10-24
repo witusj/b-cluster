@@ -3,7 +3,7 @@ title: "Verschil Gemiddelde en Volatiliteit"
 output: html_notebook
 ---
 
-Stel je je krijgt de opdracht om de kosten binnen een proces te verlagen. Dit lijkt gemakkelijk. Immers je kunt de gemiddelde kosten in de huidige situatie meten, een analyse uitvoeren (bijvoorbeeld via het Ishikawa-model), maatregelen bedenken en testen. Als de gemiddelde kosten tijdens de testfase lager uitvallen, heb je het doel bereikt. Toch?
+Stel je je krijgt de opdracht om de kosten binnen een proces te verlagen. Dit lijkt gemakkelijk. Immers je kunt de gemiddelde kosten in de huidige situatie meten (IST), een analyse uitvoeren (bijvoorbeeld via het Ishikawa-model), maatregelen bedenken en testen (SOLL). Als de gemiddelde kosten tijdens de testfase lager uitvallen, heb je het doel bereikt. Toch?
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 library(tidyverse)
