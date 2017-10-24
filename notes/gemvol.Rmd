@@ -10,7 +10,7 @@ library(tidyverse)
 library(plotly)
 
 # Genereer 2 samples en voeg die samen in een data frame
-n <- 100
+n <- 200
 IST <- rnorm(n, mean = 50, sd = 2)
 SOLL <- rnorm(n, mean = 40, sd = 5)
 
