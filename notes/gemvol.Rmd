@@ -9,7 +9,7 @@ Stel je je krijgt de opdracht om de kosten binnen een proces te verlagen. Dit li
 library(tidyverse)
 library(plotly)
 
-# Genereer 2 samples en voeg die samen in een data frame
+# Genereer 2 random samples en voeg die samen in een data frame
 n <- 100
 IST <- rnorm(n, mean = 50, sd = 2)
 SOLL <- rnorm(n, mean = 40, sd = 5)
@@ -17,6 +17,7 @@ SOLL <- rnorm(n, mean = 40, sd = 5)
 wideDF <- cbind(s = 1:n, IST, SOLL) %>% as.data.frame()
 longDF <- wideDF %>% gather(key = situatie, value = kosten, -s)
 
+# Visualiseer de data
 p <- ggplot(data = longDF) +
   geom_line(aes(x = s, y = kosten, colour = situatie)) +
   geom_hline(aes(yintercept = mean(IST)), colour = "#696969") +
