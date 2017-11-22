@@ -1,0 +1,80 @@
+---
+title: "Statistische toetsen"
+output: html_notebook
+---
+
+Met statistische toetsen probeer je informatie te vergaren over een onderzoekshypothese. Als je voldoende informatie hebt die de hypothese ondersteunt accepteer je de hypothese als waarheid.
+
+We lezen eerst de data in
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(plotly)
+```
+
+```{r}
+url <- "data/data_woonwensen_schoon.csv"
+myDF <- read.csv(url)
+rbind(head(myDF, 5), tail(myDF, 5))
+```
+
+We gaan de hypothese testen of studenten die bij hun ouders wonen qua tevredenheid verschillen van studenten die zelfstandig wonen. Hiervoor maken we een nieuwe kolom `Bij_ouders` met een boolean waarde `0` of `1` en voor het gemak selecteren we de twee variabelen waarvan we de relatie willen onderzoeken: `BijOuders` en `Tevreden`. Een belangrijke opmerking hierbij is dat we dus een afhankelijke *categorale* (`0` of `1`) variabele hebben die we willen relateren aan een *numerieke* onafhankelijke variabele. Dit bepaalt de keuze voor de statistische test die we zo meteen gaan uitvoeren.
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+myDF$BijOuders <- 0
+myDF[myDF$WoSitnu == "Bij ouders",]$BijOuders <- 1
+myDF$BijOuders <- myDF$BijOuders %>% as.factor()
+mean(myDF$BijOuders)
+testDF <- select(myDF, BijOuders, Tevreden)
+summary(testDF)
+a <- mean(myDF[myDF$BijOuders == 1,]$Tevreden)
+b <- mean(myDF[myDF$BijOuders == 0,]$Tevreden)
+
+cat("\n", "Tevredenheid bij thuiswonenden is gemiddeld: ", a)
+cat("\n", "Tevredenheid bij uitwonenden is gemiddeld: ", b)
+```
+Als we voor beide categorieen studenten het gemiddelde berekenen zien we een verschil. Maar we moeten formeel aantonen dat er voldoende bewijs is om de nulhypothese kunnen verwerpen. Een statistische test die in dit geval geschikt is, is de Analysis of Variance (ANOVA) test. Wat deze test doet is voor beide categorieen van de variabele `BijOuders` het gemiddelde bereken en deze vergelijken.
+
+De nulhypothese stelt dat er geen verschil is tussen de gemiddelden en dat dus thuiswonende en uitwonende studenten even tevreden zijn. Als de gemiddelde waarden significant van elkaar verschillen, verwerpen we deze hypothese en is één groep tevredener dan de andere.
+
+```{r}
+anovaTest = lm(Tevreden ~ BijOuders, data = testDF)
+summary(anovaTest)
+anova(anovaTest)
+```
+
+Uit de resultaten blijkt dat er een significant verschil is tussen uitwonende en thuiswonende studenten als het gaat om tevredenheid over de woonsituatie. De kans dat we een F-waarde zouden vinden van 6.3528 als de nulhypothese waar zou zijn, is slechts 1.231%.
+
+We kunnen dezelfde test uitvoeren voor de nulhypothese dat mannen even tevreden zijn als vrouwen.
+
+```{r}
+testDF <- select(myDF, Geslacht, Tevreden)
+testDF <- filter(testDF, Geslacht != 3)
+summary(testDF)
+
+c <- mean(myDF[myDF$Geslacht == "man",]$Tevreden)
+d <- mean(myDF[myDF$Geslacht == "vrouw",]$Tevreden)
+cat("\n", "Tevredenheid bij mannen is gemiddeld: ", c)
+cat("\n", "Tevredenheid bij vrouwen is gemiddeld: ", d, "\n")
+
+anovaTest <- lm(Tevreden ~ Geslacht, data = testDF)
+summary(anovaTest)
+anova(anovaTest)
+```
+
+Als je wilt kijken of er een relatie is tussen twee categorale variabelen kunnen we een Chi-kwadraat test uitvoeren. Laten we eens kijken of er een relatie is tussen `Geslacht` en `BijOuders`. De nulhypothese is dat er geen relatie is tussen `Geslacht` en `BijOuders`. Als uit de test blijkt dat er onvoldoende bewijs is voor deze hypothese, geldt automatisch de alternatieve hypothese: er is wel een verband tussen beide variabelen.
+
+```{r}
+testDF <- select(myDF, Geslacht, BijOuders)
+testDF <- filter(testDF, Geslacht != 3)
+testDF$Geslacht <- factor(testDF$Geslacht)
+countTbl <- with(testDF, table(Geslacht, BijOuders))
+countTbl
+propTbl <- prop.table((countTbl), 1)
+propTbl
+```
+
+```{r}
+chisq.test(testDF$Geslacht, testDF$BijOuders, correct=FALSE)
+```
+

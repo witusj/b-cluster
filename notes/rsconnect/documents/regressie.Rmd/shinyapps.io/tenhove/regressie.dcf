@@ -1,0 +1,12 @@
+name: regressie
+title: regressie
+username:
+account: tenhove
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 231413
+bundleId: 1056404
+url: https://tenhove.shinyapps.io/regressie/
+when: 1509637785.32885
+asMultiple: FALSE
+asStatic: FALSE

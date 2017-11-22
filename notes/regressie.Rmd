@@ -1,0 +1,77 @@
+---
+title: "Lineaire regressie"
+author: "Witek ten Hove"
+date: "10/30/2017"
+output: 
+  html_notebook: 
+    theme: cerulean
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Enkelvoudige regressie
+
+Bij een enkelvoudige regressie heb je één onafhankelijke variabele $(x)$ die een afhankelijke variabele $(y)$ beïnvloedt:
+
+$$ y = a*x + b $$
+
+Dit is de blauwe lijn in onderstaande grafiek.
+
+Wat je echter observeert, zijn een aantal paren $(x,y_{obs})$, waarbij $y_{obs}$ de 'echte' $y$ is plus ruis:
+
+$$ y_{obs} = a*x + b + ruis $$
+
+Dit zijn de grijze punten.
+
+Met een regressiemodel maak je een schatting (estimate) van de parameters $a$ en $b$, op basis van de geobserveerde paren $(x,y_{obs})$ en daarmee kun je voor iedere willekeurige $x$ weer een schatting maken van de afhankelijke waarde $y$:
+
+$$ y_{est} = a_{est} * x + b_{est} $$
+
+Dit is de rode lijn.
+
+Probeer zelf de waarde te schatten van parameter $a$ door de zwarte lijn te laten overlappen met de rode.
+
+```{r eruptions, echo=FALSE}
+library(ggplot2)
+
+a <- 2
+b <- 5
+
+X <- 0:30
+Y <- a*X + b
+noise <- rnorm(length(X), mean=0, sd=10)
+Y_obs=Y+noise
+meanX <- mean(X)
+model <- lm(Y_obs ~ X)
+a_est <- model$coefficients[2]
+a_est <- model$coefficients[2]
+Y_est <- a_est*X + a_est
+meanY_est <- mean(Y_est)
+err_est = Y_obs-Y_est
+  sq_err_est = err_est^2
+
+inputPanel(
+  sliderInput("a_test", label = "Kies een waarde voor a",
+              min = 0, max = 6, value = 0, step = 0.1)
+)
+
+renderPlot({
+  
+  Y_test <- input$a_test*(X-meanX) + meanY_est
+  err = Y_obs-Y_test
+  sq_err = err^2
+  title <- paste("SSE Test = ", round(sum(sq_err)), "\nSSE Est = ", round(sum(sq_err_est)))
+  
+  df <- data.frame(X,Y_obs, Y_test, Y_est)
+
+  ggplot(df) +
+    ggtitle(title) +
+    geom_point(aes(x=X, y=Y_obs), color = "Grey", size=5) +
+    geom_line(aes(x=X, y=Y_test), size=2) +
+    geom_line(aes(x=X, y=Y_est), color = "Red", size=1) +
+    geom_line(aes(x=X, y=Y), color = "Skyblue", size=1)
+})
+```
