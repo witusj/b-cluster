@@ -21,20 +21,20 @@ rawDF[,-1] <- lapply(rawDF[,-1], as.factor)
 
 ## Bekijk Data
 
-```{r}
+```{r fig.height=0.8}
 summary(rawDF)
 p1 <- ggplot(rawDF) +
-  geom_bar(aes(x= `Wat is uw geslacht?`), fill = "tomato") + 
+  geom_bar(aes(x= `Wat is uw geslacht?`), fill = "tomato", width = 0.5) + 
   coord_flip()
 p1
 
 p2 <- ggplot(rawDF) +
-  geom_bar(aes(x= `Loopt u altijd de volledige route in de IKEA?`), fill = "skyblue") + 
+  geom_bar(aes(x= `Loopt u altijd de volledige route in de IKEA?`), fill = "skyblue", width = 0.5) + 
   coord_flip()
 p2
 
 p3 <- ggplot(rawDF) +
-  geom_bar(aes(x= `Wat is uw geslacht?`, fill = `Loopt u altijd de volledige route in de IKEA?`)) + 
+  geom_bar(aes(x= `Wat is uw geslacht?`, fill = `Loopt u altijd de volledige route in de IKEA?`), width = 0.5) + 
   scale_fill_manual(values=c("skyblue", "tomato")) +
   coord_flip()
 p3
