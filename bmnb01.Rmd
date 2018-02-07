@@ -11,7 +11,7 @@ output: html_document
 library(tidyverse)
 library(gsheet)
 library(DT)
-rawDF <- unique(gsheet2tbl("https://docs.google.com/spreadsheets/d/1p_fdTSdU33RaHYqUv1COR98YSUi9mp3sg4hu2HzhODk/edit?usp=sharing"))
+rawDF <- unique(read_csv2("bmnb01.csv")[2:4])
 rawDF
 ```
 
@@ -32,6 +32,6 @@ endDF
 y <- datatable(endDF, options = list(columnDefs = list(list(
             className = 'dt-left', targets = list(1,2,3)
           ))))
-saveWidget(y, 'bmab01.html')
+saveWidget(y, 'bmnb01.html')
 ```
 
