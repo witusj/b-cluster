@@ -11,28 +11,13 @@ output: html_document
 library(tidyverse)
 library(gsheet)
 library(DT)
-rawDF <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1WoMuv3APQuxBFnCrlf45r0QDwmXfQAvqMiO9qwLBWi4/edit?usp=sharing")
+rawDF <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1WoMuv3APQuxBFnCrlf45r0QDwmXfQAvqMiO9qwLBWi4/edit?usp=sharing") %>% arrange(., Groep)
 rawDF
-```
 
-## Sampling
-
-```{r pressure, echo=FALSE}
-m <- dim(rawDF)[1]
-n <- 4
-r <- m%%n
-
-grNum <- c(rep(1:((m-r)/n), n), sample(1:((m-r)/n),r))
-set.seed(42)
-grSampled <- sample(grNum, m)
-endDF <- cbind(rawDF, Groep = grSampled)
-
-endDF <- arrange(endDF, Groep, Achternaam)
-endDF
-y <- datatable(endDF, options = list(columnDefs = list(list(
+y <- datatable(rawDF, options = list(columnDefs = list(list(
             className = 'dt-left', targets = list(1,2,3)
           ))))
 saveWidget(y, 'bmnb05.html')
-write.csv(endDF, "bmnb05.csv")
+write.csv(rawDF, "bmnb05.csv")
 ```
 
