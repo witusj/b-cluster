@@ -11,7 +11,7 @@ output: html_document
 library(tidyverse)
 library(gsheet)
 library(DT)
-rawDF <- unique(read_csv2("bmnb01.csv")[2:4])
+rawDF <- unique(read_csv2("bknb01.csv"))
 rawDF
 ```
 
@@ -25,13 +25,12 @@ r <- m%%n
 grNum <- c(rep(1:((m-r)/n), n), sample(1:((m-r)/n),r))
 set.seed(42)
 grSampled <- sample(grNum, m)
-endDF <- cbind(rawDF, Groep = grSampled)
+endDF <- cbind(rawDF[2], Groep = grSampled)
 
-endDF <- arrange(endDF, Groep, Achternaam)
+endDF <- arrange(endDF, Groep, Roepnaam)
 endDF
-y <- datatable(endDF, options = list(columnDefs = list(list(
-            className = 'dt-left', targets = list(1,2,3)
-          ))))
-saveWidget(y, 'bmnb01.html')
+y <- datatable(endDF)
+saveWidget(y, 'bknb01.html')
+write.csv(endDF, "bknb01def.csv")
 ```
 
